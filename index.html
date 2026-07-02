@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Wikipedia</title>
+<style>
+  :root {
+    --paper: #1a1814;
+    --ink: #ece6d8;
+    --rule: #ece6d8;
+    --muted: #7d7669;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    height: 100%;
+    margin: 0;
+  }
+
+  body {
+    background: var(--paper);
+    background-image:
+      radial-gradient(ellipse at top left, rgba(255,255,255,0.03), transparent 60%),
+      radial-gradient(ellipse at bottom right, rgba(255,255,255,0.02), transparent 60%);
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  }
+
+  main {
+    width: min(90vw, 640px);
+    padding: 0 24px;
+  }
+
+  form {
+    border-bottom: 1.5px solid var(--rule);
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    padding-bottom: 10px;
+  }
+
+  form:focus-within {
+    border-bottom-color: var(--ink);
+  }
+
+  .label {
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    white-space: nowrap;
+    font-family: Georgia, serif;
+  }
+
+  input[type="text"] {
+    flex: 1;
+    border: none;
+    background: transparent;
+    outline: none;
+    font-family: inherit;
+    font-size: 26px;
+    color: var(--ink);
+    padding: 4px 0;
+    min-width: 0;
+  }
+
+  input[type="text"]::placeholder {
+    color: var(--muted);
+    opacity: 0.6;
+  }
+
+  .links {
+    display: flex;
+    justify-content: center;
+    gap: 44px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 64px;
+  }
+
+  .link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--muted);
+  }
+
+  .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    border: 1px solid var(--muted);
+    color: var(--muted);
+    transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+  }
+
+  .icon svg {
+    width: 32px;
+    height: 32px;
+    stroke: currentColor;
+  }
+
+  .label-text {
+    font-family: Georgia, serif;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    transition: color 0.15s ease;
+  }
+
+  .link:hover .icon,
+  .link:focus-visible .icon {
+    color: var(--ink);
+    border-color: var(--ink);
+    background-color: rgba(236, 230, 216, 0.06);
+  }
+
+  .link:hover .label-text,
+  .link:focus-visible .label-text {
+    color: var(--ink);
+  }
+
+  ::selection {
+    background: #ece6d8;
+    color: var(--paper);
+  }
+</style>
+</head>
+<body>
+  <main>
+    <form action="https://en.wikipedia.org/wiki/Special:Search" method="get">
+      <span class="label">Wikipedia</span>
+      <input
+        type="text"
+        name="search"
+        placeholder="Search"
+        autofocus
+        autocomplete="off"
+        spellcheck="false"
+      >
+      <input type="hidden" name="fulltext" value="1">
+    </form>
+
+    <nav class="links">
+      <a href="https://mail.google.com" class="link">
+        <span class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.3">
+            <rect x="2.5" y="5" width="19" height="14" rx="1.5"/>
+            <path d="M3 6.5 L12 13 L21 6.5"/>
+          </svg>
+        </span>
+        <span class="label-text">Gmail</span>
+      </a>
+      <a href="https://portal.my.uq.edu.au/#/dashboard" class="link">
+        <span class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.3">
+            <path d="M2.5 8.5 L12 4 L21.5 8.5 L12 13 Z"/>
+            <path d="M6.5 10.5 V16 C6.5 17.5 9 19 12 19 C15 19 17.5 17.5 17.5 16 V10.5"/>
+            <line x1="21.5" y1="8.5" x2="21.5" y2="15"/>
+          </svg>
+        </span>
+        <span class="label-text">UQ</span>
+      </a>
+    </nav>
+  </main>
+</body>
+</html>
